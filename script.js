@@ -82,3 +82,31 @@ if (contactForm && formStatus) {
     }
   });
 }
+
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let course = document.getElementById("course").value;
+    let message = document.getElementById("message").value;
+
+    let whatsappMessage =
+`*New Course Enquiry*
+
+ Name: ${name}
+ Email: ${email}
+ Phone: ${phone}
+ Course: ${course}
+
+ Message:
+${message}`;
+
+    let whatsappNumber = "919337191561"; // Replace with your WhatsApp number
+
+    let url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(url, "_blank");
+});
